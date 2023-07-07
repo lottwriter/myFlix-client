@@ -13,7 +13,7 @@ export const MainView = () => {
         return {
           title: movie.title,
           description: movie.description,
-          genre: movie.genre.name,
+          genre: movie.genre.Name,
           director: movie.director.name,
           year: movie.year
         };
