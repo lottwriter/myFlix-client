@@ -11,15 +11,15 @@ export const MainView = () => {
     .then((data) => {
       const moviesFromAPI = data.map((movie) => {
         return {
-          title: movie.title,
-          description: movie.description,
-          genre: movie.genre.Name,
-          director: movie.director.name,
-          year: movie.year
+          title: movie.Title,
+          description: movie.Description,
+          director: movie.Director,
+          year: movie.year,
+          image: movie.ImagePath
         };
       });
-
-      setBooks(moviesFromAPI);
+        
+      setMovies(moviesFromAPI);
     });
 }, []);
 
@@ -37,7 +37,8 @@ export const MainView = () => {
   if (movies.length === 0) {
     return <div>The list is empty!</div>;
   }
-
+console.log(movies.length)
+console.log(movies)
   return (
     <div>
       {movies.map((movie) => (
