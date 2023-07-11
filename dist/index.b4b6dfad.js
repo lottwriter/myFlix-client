@@ -27179,6 +27179,7 @@ const MainView = ()=>{
         fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             const moviesFromAPI = data.map((movie)=>{
                 return {
+                    id: movie._id,
                     title: movie.Title,
                     description: movie.Description,
                     director: movie.Director.Name,
@@ -27196,14 +27197,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 31,
+        lineNumber: 32,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 39,
+        lineNumber: 40,
         columnNumber: 12
     }, undefined);
     console.log(movies.length);
@@ -27216,12 +27217,12 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 46,
+                lineNumber: 47,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 44,
+        lineNumber: 45,
         columnNumber: 5
     }, undefined);
 };

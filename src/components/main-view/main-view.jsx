@@ -11,6 +11,7 @@ export const MainView = () => {
     .then((data) => {
       const moviesFromAPI = data.map((movie) => {
         return {
+          id: movie._id,
           title: movie.Title,
           description: movie.Description,
           director: movie.Director.Name,
