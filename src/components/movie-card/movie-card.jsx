@@ -6,16 +6,16 @@ export const MovieCard = ({ movieData, onMovieClick }) => {
         onMovieClick(movieData);
       }}
     >
-      {movieData.title}
+      {movieData.Title}
     </div>
   );
 };
 MovieCard.propTypes = {
   movieData: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired
+    Title: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Year: PropTypes.string.isRequired
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };
