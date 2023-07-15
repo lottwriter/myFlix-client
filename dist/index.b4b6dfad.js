@@ -27183,33 +27183,33 @@ const MainView = ()=>{
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        if (!token) return;
-        fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies", {
-            headers: {
-                Authorization: `Bearer ${token}`
+        const fetchData = async ()=>{
+            try {
+                const response = await fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies", {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                const data = await response.json();
+                const moviesFromAPI = data.map((movie)=>({
+                        id: movie._id,
+                        Title: movie.Title,
+                        Description: movie.Description,
+                        Director: movie.Director.Name,
+                        Genre: movie.Genre.Name,
+                        Year: movie.Year,
+                        ImagePath: movie.ImagePath
+                    }));
+                setMovies(moviesFromAPI);
+            } catch (error) {
+                alert("something broke!");
+                console.error(error);
             }
-        }).then((response)=>response.json()).then((movies)=>{
-            setMovies(movies);
-        });
+        };
+        fetchData();
     }, [
         token
     ]);
-    (0, _react.useEffect)(()=>{
-        fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
-            const moviesFromAPI = data.map((movie)=>{
-                return {
-                    id: movie._id,
-                    title: movie.Title,
-                    description: movie.Description,
-                    director: movie.Director.Name,
-                    genre: movie.Genre.Name,
-                    year: movie.Year,
-                    image: movie.ImagePath
-                };
-            });
-            setMovies(moviesFromAPI);
-        });
-    }, []);
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
@@ -27219,13 +27219,13 @@ const MainView = ()=>{
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56,
+                lineNumber: 53,
                 columnNumber: 7
             }, undefined),
             "or",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 61,
+                lineNumber: 58,
                 columnNumber: 7
             }, undefined)
         ]
@@ -27235,14 +27235,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 72,
+        lineNumber: 69,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 80,
+        lineNumber: 77,
         columnNumber: 12
     }, undefined);
     console.log(movies.length);
@@ -27256,7 +27256,7 @@ const MainView = ()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 87,
+                    lineNumber: 84,
                     columnNumber: 9
                 }, undefined)),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27268,17 +27268,17 @@ const MainView = ()=>{
                 children: "Logout"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 95,
+                lineNumber: 92,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 85,
+        lineNumber: 82,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "+64srcXYnd+kkXin9OuLMozGTys=");
+_s(MainView, "skShail9kO25ilQX788tJ78Yq3c=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -28351,7 +28351,7 @@ const MovieView = ({ movie, onBackClick })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.Director.Name
+                        children: movie.Director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 22,
@@ -28373,7 +28373,7 @@ const MovieView = ({ movie, onBackClick })=>{
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.Genre.Name
+                        children: movie.Genre
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 26,

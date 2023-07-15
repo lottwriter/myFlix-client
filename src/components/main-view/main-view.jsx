@@ -15,38 +15,35 @@ export const MainView = () => {
 
 
   useEffect(() => {
-      if (!token) {
-        return;
-      }
-      
-      fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies", {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-        .then((response) => response.json())
-        .then((movies) => {
-          setMovies(movies)
-        });
-    }, [token]);
-
-  useEffect(() => {
-    fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies")
-    .then((response) => response.json())
-    .then((data) => {
-      const moviesFromAPI = data.map((movie) => {
-        return {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://movieflixapi-267bf627ca0c.herokuapp.com/movies",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
+        const data = await response.json();
+        const moviesFromAPI = data.map((movie) => ({
           id: movie._id,
-          title: movie.Title,
-          description: movie.Description,
-          director: movie.Director.Name,
-          genre: movie.Genre.Name,
-          year: movie.Year,
-          image: movie.ImagePath
-        };
-      });
-        
-      setMovies(moviesFromAPI);
-    });
-}, []);
+          Title: movie.Title,
+          Description: movie.Description,
+          Director: movie.Director.Name,
+          Genre: movie.Genre.Name,
+          Year: movie.Year,
+          ImagePath: movie.ImagePath,
+        }));
+  
+        setMovies(moviesFromAPI);
+      } catch (error) {
+        alert("something broke!")
+        console.error(error);
+      }
+    };
+  
+    fetchData();
+  }, [token]);
+  
 
   
 
