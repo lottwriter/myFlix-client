@@ -1,6 +1,5 @@
 
 import { createRoot } from 'react-dom/client';
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
 
 import { createRoot } from "react-dom/client";
@@ -11,7 +10,7 @@ import "./index.scss";
 // Main component (will eventually use all the others)
 const App = () => {
   return (
-    <Container style={{border: "1px solid red"}}>
+    <Container >
       <MainView />
     </Container>
   );
