@@ -1,10 +1,58 @@
+import { Link, useParams } from 'react-router-dom';
 import './movie-view.scss';
-export const MovieView = ({ movie, onBackClick }) => {
+
+export const MovieView = ({ movies, user, token }) => {
+  const { MovieID } = useParams();
+  const movie = movies.find((b) => b.id === MovieID)
+
+  const addFavorite = () => {
+    console.log(user.Username);
+    console.log(movie.id);
+    fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/${movie.id}`, {
+      method: 'POST',
+        headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((response) => {
+      if (response.ok) {
+        alert('Added to favorites')
+      } else {
+        alert("Failure.")
+      }
+    })
+  }
+
+  const removeFavorite = () => {
+    fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/${movie.id}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((response) => {
+      if (response.ok) {
+        alert("Removed from favorites")
+      } else {
+        alert("Failure.")
+      }
+    })
+  }
+ 
+  console.log(MovieID + `1`);
+  console.log(movies)
+
+  if (!movies || movies.length === 0) {
+    return <div>Loading...</div>; 
+  }
+
+ 
   console.log(movie);
+
+  if (!movie) {
+    return <div>Movie not found</div>; 
+  }
+
     return (
       <div>
         <div>
-          <img src={movie.ImagePath} alt='movie'/>
+          <img className='w-50' src={movie.ImagePath} alt='movie'/>
         </div>
         <div>
           <span>Title: </span>
@@ -26,7 +74,20 @@ export const MovieView = ({ movie, onBackClick }) => {
           <span>Genre: </span>
           <span>{movie.Genre}</span>
         </div>
-        <button onClick={onBackClick} className='back-button'>Back</button>
+        {user.FavoriteMovies.includes(movie.id) ? (
+          <div>
+          <button variant='link' onClick={removeFavorite}>Remove from Favorites</button>
+          </div>
+        ) : (<div>
+          <button variant='link' onClick={addFavorite}>Favorite</button>
+        </div>
+        )}
+        <Link to={`/`}>
+          <div>
+          <button className='back-button'>Back</button>
+          </div>
+        </Link>
+       
       </div>
     );
   };
