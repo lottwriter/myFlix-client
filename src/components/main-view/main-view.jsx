@@ -114,7 +114,7 @@ console.log(movies)
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} token={token} />
+                    <MovieView movies={movies} user={user} token={localStorage.getItem("token")} />
                   </Col>
                 )}
               </>

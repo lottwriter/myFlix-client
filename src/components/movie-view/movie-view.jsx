@@ -5,10 +5,8 @@ export const MovieView = ({ movies, user, token }) => {
   const { MovieID } = useParams();
   const movie = movies.find((b) => b.id === MovieID)
 
-  const addFavorite = () => {
-    console.log(user.Username);
-    console.log(movie.id);
-    fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/${movie.id}`, {
+  const addFavorite = async () => {
+    await fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/${movie.id}`, {
       method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
     })

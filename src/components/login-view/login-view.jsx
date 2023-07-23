@@ -30,12 +30,12 @@ export const LoginView = ({ onLoggedIn }) => {
       } else {
         alert("No such user");
       }
+      console.log(data.token)
     })
     .catch((e) => {
       alert("Something went wrong");
     });
   };
-
   return (
     <Form onSubmit={handleSubmit}>
     <Form.Group controlId="formUsername">
