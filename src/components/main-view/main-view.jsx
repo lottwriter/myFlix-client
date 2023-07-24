@@ -18,39 +18,41 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
 
+  
+  const updateUser = (updatedUser) => {
+    setUser(updateUser);
+    localStorage.setItem('user', JSON.stringify(user))
+  }
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://movieflixapi-267bf627ca0c.herokuapp.com/movies",
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        const data = await response.json();
-        const moviesFromAPI = data.map((movie) => ({
-          id: movie._id,
-          Title: movie.Title,
-          Description: movie.Description,
-          Director: movie.Director.Name,
-          Genre: movie.Genre.Name,
-          Year: movie.Year,
-          ImagePath: movie.ImagePath,
-        }));
+    if (!token) {
+        return;
+    }
+    fetch("https://movieflixapi-267bf627ca0c.herokuapp.com/movies", {
+        headers: { Authorization: `Bearer ${token}`}
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        const moviesFromApi = data.map((movie) => {
+            return {
+              id: movie._id,
+              Title: movie.Title,
+              Description: movie.Description,
+              Director: movie.Director.Name,
+              Genre: movie.Genre.Name,
+              Year: movie.Year,
+              ImagePath: movie.ImagePath,
+            };
+        });
+        setMovies(moviesFromApi);
+    })
+    .catch((error) => {
+        console.log(error)
+    })
+}, [token, user]);
   
-        setMovies(moviesFromAPI);
-      } catch (error) {
-        alert("something broke!")
-        console.error(error);
-      }
-    };
-  
-    fetchData();
-  }, [token]);
   
 
   
@@ -59,7 +61,6 @@ export const MainView = () => {
   
 
 console.log(movies.length)
-console.log(movies)
   return (
     <BrowserRouter>
     <NavigationBar
@@ -90,7 +91,7 @@ console.log(movies)
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token);}} token={token} user={user} />
                   </Col>
                 )}
               </>
@@ -101,7 +102,7 @@ console.log(movies)
           path='/:UserID/profile'
           element={
             <Col>
-              <ProfileView user={user} movies={movies} />
+              <ProfileView user={user} movies={movies} token={token}/>
             </Col>
           } />
            <Route
@@ -128,7 +129,9 @@ console.log(movies)
               ) : movies.length === 0 ? (
                 <Col>Loading . . .</Col>
               ) : (
+                
                 <>
+                
                   {movies.map((movie) => (
                     <Col className="mb-4" key={movie.id} md={3}>
                       <MovieCard movieData={movie} />

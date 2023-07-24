@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import './movie-view.scss';
 
-export const MovieView = ({ movies, user, token }) => {
+export const MovieView = ({ movies, user, token, updatedUser }) => {
   const { MovieID } = useParams();
   const movie = movies.find((b) => b.id === MovieID)
 
@@ -16,6 +16,11 @@ export const MovieView = ({ movies, user, token }) => {
       } else {
         alert("Failure.")
       }
+    }).then((user) => {
+      if (user) {
+        setFavorite(true);
+        updatedUser(user);
+      }
     })
   }
 
@@ -29,6 +34,11 @@ export const MovieView = ({ movies, user, token }) => {
         alert("Removed from favorites")
       } else {
         alert("Failure.")
+      }
+    }).then((user) => {
+      if (user) {
+        setFavorite(true);
+        updatedUser(user);
       }
     })
   }
@@ -72,14 +82,13 @@ export const MovieView = ({ movies, user, token }) => {
           <span>Genre: </span>
           <span>{movie.Genre}</span>
         </div>
-        {user.FavoriteMovies.includes(movie.id) ? (
           <div>
           <button variant='link' onClick={removeFavorite}>Remove from Favorites</button>
           </div>
-        ) : (<div>
+          <div>
           <button variant='link' onClick={addFavorite}>Favorite</button>
         </div>
-        )}
+        
         <Link to={`/`}>
           <div>
           <button className='back-button'>Back</button>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
-export const LoginView = ({ onLoggedIn }) => {
+export const LoginView = ({ onLoggedIn, user, token }) => {
      const [username, setUsername] = useState("");
      const [password, setPassword] = useState("");
   const handleSubmit = (event) => {
