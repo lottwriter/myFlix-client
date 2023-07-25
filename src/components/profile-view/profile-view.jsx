@@ -6,28 +6,19 @@ import { useState, useEffect } from 'react';
 export const ProfileView = ({ user, movies, token }) => {
      
     const [favoriteMovies, setFavoriteMovies] = useState([]);
-    fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/`, {
-        headers: { Authorization: `Bearer ${token}`}
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(`Returned data: ` + data)
-        const filteredMovies = movies.filter((m) => data.FavoriteMovies.includes(m.id));
-        
-        setFavoriteMovies(filteredMovies);
-    })
-
-
+    useEffect(() => {
+      fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(`Returned data: ` + data);
+          const filteredMovies = movies.filter((m) => data.FavoriteMovies.includes(m.id));
+          setFavoriteMovies(filteredMovies);
+        });
+    }, []);
 
  
-//     console.log(`local state: ` + favoriteMovies.length + ` movies`)
-//     console.log(`User state: ` + user.FavoriteMovies.length + ` movies`)
-//   useEffect(() => {
-//     const filteredMovies = movies.filter((m) => user.FavoriteMovies.includes(m.id));
-//     console.log(filteredMovies.length + ` filtered movies`)
-//     setFavoriteMovies(filteredMovies);
-//   }, [user, movies]);
-
   return (
     <div>
       <Row className='m-4'>
