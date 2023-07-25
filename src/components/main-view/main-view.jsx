@@ -138,7 +138,6 @@ console.log(movies.length)
                     </Col>
                     
                   ))}
-                  <Button className='mb-4' onClick={() => { setUser(null); setToken(null); localStorage.clear(); }}>Logout</Button>
                 </>
               )}
             </>
