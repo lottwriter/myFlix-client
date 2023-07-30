@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Button, Card } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-
+import React from "react";
 export const MovieCard = ({ movieData, onMovieClick }) => {
   return (
     <Card className="h-100">
