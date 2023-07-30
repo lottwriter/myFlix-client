@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
+import React from 'react';
 
 export const LoginView = ({ onLoggedIn, user, token }) => {
      const [username, setUsername] = useState("");

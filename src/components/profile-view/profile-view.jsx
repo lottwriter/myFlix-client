@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Col, Row } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import { useState, useEffect } from 'react';
+import React from 'react';
 
 export const ProfileView = ({ user, movies, token }) => {
      

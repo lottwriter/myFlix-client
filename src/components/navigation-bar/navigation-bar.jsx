@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import React from 'react';
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
     console.log(user + `user`);
