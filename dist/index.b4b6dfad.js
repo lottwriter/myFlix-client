@@ -2947,8 +2947,11 @@ var _client = require("react-dom/client");
 var _indexScss = require("./index.scss");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+<<<<<<< Updated upstream
 var _store = require("./redux/store");
 var _reactRedux = require("react-redux");
+=======
+>>>>>>> Stashed changes
 var _mainView = require("./components/main-view/main-view");
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
@@ -2964,12 +2967,20 @@ const App = ()=>{
             }, undefined)
         }, void 0, false, {
             fileName: "src/index.jsx",
+<<<<<<< Updated upstream
             lineNumber: 15,
+=======
+            lineNumber: 14,
+>>>>>>> Stashed changes
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/index.jsx",
+<<<<<<< Updated upstream
         lineNumber: 14,
+=======
+        lineNumber: 13,
+>>>>>>> Stashed changes
         columnNumber: 5
     }, undefined);
 };
@@ -2980,7 +2991,11 @@ const root = (0, _client.createRoot)(container);
 // Tells React to render the app in the root DOM element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(App, {}, void 0, false, {
     fileName: "src/index.jsx",
+<<<<<<< Updated upstream
     lineNumber: 27,
+=======
+    lineNumber: 24,
+>>>>>>> Stashed changes
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2991,7 +3006,11 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
+<<<<<<< Updated upstream
 },{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","react":"21dqq","./redux/store":"bDp2K","react-redux":"bdVon","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW"}],"iTorj":[function(require,module,exports) {
+=======
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","react":"21dqq","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW"}],"iTorj":[function(require,module,exports) {
+>>>>>>> Stashed changes
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -26986,6 +27005,7 @@ module.exports = require("ef03b89c8fe2794e");
 },{}],"lJZlQ":[function() {},{}],"bDp2K":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+<<<<<<< Updated upstream
 parcelHelpers.export(exports, "store", ()=>store);
 var _toolkit = require("@reduxjs/toolkit");
 var _movies = require("./reducers/movies");
@@ -27066,6 +27086,36 @@ var __extends = undefined && undefined.__extends || function() {
             for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
         };
         return extendStatics(d, b);
+=======
+parcelHelpers.export(exports, "MainView", ()=>MainView);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+var _loginView = require("../login-view/login-view");
+var _signupView = require("../signup-view/signup-view");
+var _navigationBar = require("../navigation-bar/navigation-bar");
+var _profileView = require("../profile-view/profile-view");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _button = require("react-bootstrap/Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _reactRouterDom = require("react-router-dom");
+var _s = $RefreshSig$();
+const MainView = ()=>{
+    _s();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedToken = localStorage.getItem("token");
+    const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null);
+    const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null);
+    const [movies, setMovies] = (0, _react.useState)([]);
+    const updateUser = (updatedUser)=>{
+        setUser(updateUser);
+        localStorage.setItem("user", JSON.stringify(user));
+>>>>>>> Stashed changes
     };
     return function(d, b) {
         if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
@@ -27154,6 +27204,7 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
                     _.trys.pop();
                     continue;
             }
+<<<<<<< Updated upstream
             op = body.call(thisArg, _);
         } catch (e) {
             op = [
@@ -27170,6 +27221,160 @@ var __generator = undefined && undefined.__generator || function(thisArg, body) 
             done: true
         };
     }
+=======
+        }).then((response)=>response.json()).then((data)=>{
+            const moviesFromApi = data.map((movie)=>{
+                return {
+                    id: movie._id,
+                    Title: movie.Title,
+                    Description: movie.Description,
+                    Director: movie.Director.Name,
+                    Genre: movie.Genre.Name,
+                    Year: movie.Year,
+                    ImagePath: movie.ImagePath
+                };
+            });
+            setMovies(moviesFromApi);
+        }).catch((error)=>{
+            console.log(error);
+        });
+    }, [
+        token,
+        user
+    ]);
+    console.log(movies.length);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navigationBar.NavigationBar), {
+                user: user,
+                onLoggedOut: ()=>{
+                    setUser(null);
+                    localStorage.clear();
+                    setToken(null);
+                }
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 67,
+                columnNumber: 5
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
+                className: "justify-content-md-center",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            path: "/signup",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                    to: "/"
+                                }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                    md: 5,
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signupView.SignupView), {}, void 0, false, void 0, void 0)
+                                }, void 0, false, void 0, void 0)
+                            }, void 0, false)
+                        }, void 0, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 72,
+                            columnNumber: 7
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            path: "/login",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                    to: "/"
+                                }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                    md: 5,
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginView.LoginView), {
+                                        onLoggedIn: (user, token)=>{
+                                            setUser(user);
+                                            setToken(token);
+                                        },
+                                        token: token,
+                                        user: user
+                                    }, void 0, false, void 0, void 0)
+                                }, void 0, false, void 0, void 0)
+                            }, void 0, false)
+                        }, void 0, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 87,
+                            columnNumber: 12
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            path: "/:UserID/profile",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
+                                    user: user,
+                                    movies: movies,
+                                    token: token
+                                }, void 0, false, void 0, void 0)
+                            }, void 0, false, void 0, void 0)
+                        }, void 0, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 102,
+                            columnNumber: 11
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            path: "/movies/:MovieID",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                    to: "/login",
+                                    replace: true
+                                }, void 0, false, void 0, void 0) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                    children: "The list is empty!"
+                                }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                    md: 8,
+                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
+                                        movies: movies,
+                                        user: user,
+                                        token: localStorage.getItem("token")
+                                    }, void 0, false, void 0, void 0)
+                                }, void 0, false, void 0, void 0)
+                            }, void 0, false)
+                        }, void 0, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 109,
+                            columnNumber: 12
+                        }, undefined),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            path: "/",
+                            element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                    to: "/login",
+                                    replace: true
+                                }, void 0, false, void 0, void 0) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                    children: "Loading . . ."
+                                }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                    children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                                            className: "mb-4",
+                                            md: 3,
+                                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                                                movieData: movie
+                                            }, void 0, false, void 0, void 0)
+                                        }, movie.id, false, void 0, void 0))
+                                }, void 0, false)
+                            }, void 0, false)
+                        }, void 0, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 124,
+                            columnNumber: 13
+                        }, undefined)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 71,
+                    columnNumber: 7
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 70,
+                columnNumber: 5
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 66,
+        columnNumber: 5
+    }, undefined);
+>>>>>>> Stashed changes
 };
 var __spreadArray = undefined && undefined.__spreadArray || function(to, from) {
     for(var i = 0, il = from.length, j = to.length; i < il; i++, j++)to[j] = from[i];
@@ -29249,6 +29454,7 @@ process.umask = function() {
 },{}],"2AR8T":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+<<<<<<< Updated upstream
 parcelHelpers.export(exports, "Immer", ()=>un);
 parcelHelpers.export(exports, "applyPatches", ()=>pn);
 parcelHelpers.export(exports, "castDraft", ()=>K);
@@ -30214,6 +30420,93 @@ parcelHelpers.export(exports, "createStore", ()=>createStore);
 parcelHelpers.export(exports, "legacy_createStore", ()=>legacy_createStore);
 var _objectSpread2 = require("@babel/runtime/helpers/esm/objectSpread2");
 var _objectSpread2Default = parcelHelpers.interopDefault(_objectSpread2);
+=======
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+const MovieCard = ({ movieData, onMovieClick })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
+        className: "h-100",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                variant: "top",
+                src: movieData.ImagePath,
+                style: {
+                    width: 200
+                }
+            }, void 0, false, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Body, {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                        children: movieData.Title
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 10,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Text, {
+                        children: movieData.Description
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 11,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                        to: `/movies/${encodeURIComponent(movieData.id)}`,
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                            variant: "link",
+                            children: "Open"
+                        }, void 0, false, {
+                            fileName: "src/components/movie-card/movie-card.jsx",
+                            lineNumber: 13,
+                            columnNumber: 9
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 12,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/movie-card/movie-card.jsx",
+        lineNumber: 7,
+        columnNumber: 5
+    }, undefined);
+};
+_c = MovieCard;
+MovieCard.propTypes = {
+    movieData: (0, _propTypesDefault.default).shape({
+        Title: (0, _propTypesDefault.default).string.isRequired,
+        ImagePath: (0, _propTypesDefault.default).string.isRequired,
+        Description: (0, _propTypesDefault.default).string.isRequired,
+        Year: (0, _propTypesDefault.default).string.isRequired
+    }).isRequired
+};
+var _c;
+$RefreshReg$(_c, "MovieCard");
+
+  $parcel$ReactRefreshHelpers$67b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW"}],"7wKI2":[function(require,module,exports) {
+>>>>>>> Stashed changes
 /**
  * Adapted from React: https://github.com/facebook/react/blob/master/packages/shared/formatProdErrorMessage.js
  *
@@ -52465,7 +52758,10 @@ var _reactRouterDom = require("react-router-dom");
 var _movieViewScss = require("./movie-view.scss");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+<<<<<<< Updated upstream
 var _reactRedux = require("react-redux");
+=======
+>>>>>>> Stashed changes
 var _s = $RefreshSig$();
 const MovieView = ({ user, token, updatedUser })=>{
     _s();
@@ -52510,7 +52806,11 @@ const MovieView = ({ user, token, updatedUser })=>{
         children: "Loading..."
     }, void 0, false, {
         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
         lineNumber: 53,
+=======
+        lineNumber: 51,
+>>>>>>> Stashed changes
         columnNumber: 12
     }, undefined);
     console.log(`M: ` + movie);
@@ -52518,7 +52818,11 @@ const MovieView = ({ user, token, updatedUser })=>{
         children: "Movie not found"
     }, void 0, false, {
         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
         lineNumber: 60,
+=======
+        lineNumber: 58,
+>>>>>>> Stashed changes
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52530,12 +52834,20 @@ const MovieView = ({ user, token, updatedUser })=>{
                     alt: "movie"
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                     lineNumber: 66,
+=======
+                    lineNumber: 64,
+>>>>>>> Stashed changes
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 65,
+=======
+                lineNumber: 63,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52544,20 +52856,32 @@ const MovieView = ({ user, token, updatedUser })=>{
                         children: "Title: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 69,
+=======
+                        lineNumber: 67,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.Title
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 70,
+=======
+                        lineNumber: 68,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 68,
+=======
+                lineNumber: 66,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52566,20 +52890,32 @@ const MovieView = ({ user, token, updatedUser })=>{
                         children: "Description: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 73,
+=======
+                        lineNumber: 71,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.Description
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 74,
+=======
+                        lineNumber: 72,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 72,
+=======
+                lineNumber: 70,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52588,20 +52924,32 @@ const MovieView = ({ user, token, updatedUser })=>{
                         children: "Year published: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 77,
+=======
+                        lineNumber: 75,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.Year
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 78,
+=======
+                        lineNumber: 76,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 76,
+=======
+                lineNumber: 74,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52610,20 +52958,32 @@ const MovieView = ({ user, token, updatedUser })=>{
                         children: "Director: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 81,
+=======
+                        lineNumber: 79,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.Director
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 82,
+=======
+                        lineNumber: 80,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 80,
+=======
+                lineNumber: 78,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52632,20 +52992,32 @@ const MovieView = ({ user, token, updatedUser })=>{
                         children: "Genre: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 85,
+=======
+                        lineNumber: 83,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.Genre
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 86,
+=======
+                        lineNumber: 84,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 84,
+=======
+                lineNumber: 82,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52655,12 +53027,31 @@ const MovieView = ({ user, token, updatedUser })=>{
                     children: "Remove from Favorites"
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                     lineNumber: 89,
+=======
+                    lineNumber: 87,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 88,
+                lineNumber: 86,
+                columnNumber: 11
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                    variant: "link",
+                    onClick: addFavorite,
+                    children: "Favorite"
+                }, void 0, false, {
+                    fileName: "src/components/movie-view/movie-view.jsx",
+                    lineNumber: 90,
+>>>>>>> Stashed changes
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/movie-view/movie-view.jsx",
+                lineNumber: 89,
                 columnNumber: 11
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -52686,23 +53077,39 @@ const MovieView = ({ user, token, updatedUser })=>{
                         children: "Back"
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 97,
+=======
+                        lineNumber: 95,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                     lineNumber: 96,
+=======
+                    lineNumber: 94,
+>>>>>>> Stashed changes
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 95,
+=======
+                lineNumber: 93,
+>>>>>>> Stashed changes
                 columnNumber: 9
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/movie-view/movie-view.jsx",
+<<<<<<< Updated upstream
         lineNumber: 64,
+=======
+        lineNumber: 62,
+>>>>>>> Stashed changes
         columnNumber: 7
     }, undefined);
 };
@@ -52721,7 +53128,11 @@ $RefreshReg$(_c, "MovieView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
+<<<<<<< Updated upstream
 },{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","./movie-view.scss":"jnlR5","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW","react-redux":"bdVon"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
+=======
+},{"react/jsx-dev-runtime":"iTorj","react-router-dom":"9xmpe","./movie-view.scss":"jnlR5","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW"}],"jnlR5":[function() {},{}],"9YtA0":[function(require,module,exports) {
+>>>>>>> Stashed changes
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -52735,8 +53146,11 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+<<<<<<< Updated upstream
 var _reactRedux = require("react-redux");
 var _user = require("../../redux/reducers/user");
+=======
+>>>>>>> Stashed changes
 var _s = $RefreshSig$();
 const LoginView = ({ onLoggedIn, token })=>{
     _s();
@@ -52779,7 +53193,11 @@ const LoginView = ({ onLoggedIn, token })=>{
                         children: "Username:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 50,
+=======
+                        lineNumber: 43,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -52790,13 +53208,21 @@ const LoginView = ({ onLoggedIn, token })=>{
                         minLength: "3"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 51,
+=======
+                        lineNumber: 44,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 49,
+=======
+                lineNumber: 42,
+>>>>>>> Stashed changes
                 columnNumber: 5
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -52806,7 +53232,11 @@ const LoginView = ({ onLoggedIn, token })=>{
                         children: "Password:"
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 59,
+=======
+                        lineNumber: 52,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -52816,13 +53246,21 @@ const LoginView = ({ onLoggedIn, token })=>{
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 60,
+=======
+                        lineNumber: 53,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 58,
+=======
+                lineNumber: 51,
+>>>>>>> Stashed changes
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -52831,13 +53269,21 @@ const LoginView = ({ onLoggedIn, token })=>{
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 67,
+=======
+                lineNumber: 60,
+>>>>>>> Stashed changes
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
+<<<<<<< Updated upstream
         lineNumber: 48,
+=======
+        lineNumber: 41,
+>>>>>>> Stashed changes
         columnNumber: 5
     }, undefined);
 };
@@ -53046,6 +53492,7 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+<<<<<<< Updated upstream
 var _reactRedux = require("react-redux");
 var _user = require("../../redux/reducers/user");
 var _s = $RefreshSig$();
@@ -53053,6 +53500,9 @@ const NavigationBar = ({ onLoggedOut })=>{
     _s();
     const user = (0, _reactRedux.useSelector)((state)=>state.user);
     const dispatch = (0, _reactRedux.useDispatch);
+=======
+const NavigationBar = ({ user, onLoggedOut })=>{
+>>>>>>> Stashed changes
     console.log(user + `user`);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar), {
         bg: "light",
@@ -53065,14 +53515,22 @@ const NavigationBar = ({ onLoggedOut })=>{
                     children: "MyFlix"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                     lineNumber: 13,
+=======
+                    lineNumber: 10,
+>>>>>>> Stashed changes
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Toggle, {
                     "aria-controls": "basic-navbar-nav"
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                     lineNumber: 16,
+=======
+                    lineNumber: 13,
+>>>>>>> Stashed changes
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Collapse, {
@@ -53088,7 +53546,11 @@ const NavigationBar = ({ onLoggedOut })=>{
                                         children: "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                                         lineNumber: 21,
+=======
+                                        lineNumber: 18,
+>>>>>>> Stashed changes
                                         columnNumber: 21
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -53097,7 +53559,11 @@ const NavigationBar = ({ onLoggedOut })=>{
                                         children: "Signup"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                                         lineNumber: 24,
+=======
+                                        lineNumber: 21,
+>>>>>>> Stashed changes
                                         columnNumber: 21
                                     }, undefined)
                                 ]
@@ -53110,7 +53576,11 @@ const NavigationBar = ({ onLoggedOut })=>{
                                         children: "Home"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                                         lineNumber: 32,
+=======
+                                        lineNumber: 29,
+>>>>>>> Stashed changes
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -53120,7 +53590,11 @@ const NavigationBar = ({ onLoggedOut })=>{
                                         children: "Logout"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                                         lineNumber: 35,
+=======
+                                        lineNumber: 32,
+>>>>>>> Stashed changes
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
@@ -53129,7 +53603,11 @@ const NavigationBar = ({ onLoggedOut })=>{
                                         children: "Profile"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                                         lineNumber: 36,
+=======
+                                        lineNumber: 33,
+>>>>>>> Stashed changes
                                         columnNumber: 17
                                     }, undefined)
                                 ]
@@ -53137,23 +53615,39 @@ const NavigationBar = ({ onLoggedOut })=>{
                         ]
                     }, void 0, true, {
                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 18,
+=======
+                        lineNumber: 15,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
                     lineNumber: 17,
+=======
+                    lineNumber: 14,
+>>>>>>> Stashed changes
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
             lineNumber: 12,
+=======
+            lineNumber: 9,
+>>>>>>> Stashed changes
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/navigation-bar/navigation-bar.jsx",
+<<<<<<< Updated upstream
         lineNumber: 11,
+=======
+        lineNumber: 8,
+>>>>>>> Stashed changes
         columnNumber: 5
     }, undefined);
 };
@@ -53171,7 +53665,11 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
+<<<<<<< Updated upstream
 },{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW","react-redux":"bdVon","../../redux/reducers/user":"e6tdF"}],"2vVqf":[function(require,module,exports) {
+=======
+},{"react/jsx-dev-runtime":"iTorj","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"9jMnn","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"gJEGW"}],"2vVqf":[function(require,module,exports) {
+>>>>>>> Stashed changes
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -53187,7 +53685,10 @@ var _reactBootstrap = require("react-bootstrap");
 var _movieCard = require("../movie-card/movie-card");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+<<<<<<< Updated upstream
 var _reactRedux = require("react-redux");
+=======
+>>>>>>> Stashed changes
 var _s = $RefreshSig$();
 const ProfileView = ({ token })=>{
     _s();
@@ -53218,25 +53719,41 @@ const ProfileView = ({ token })=>{
                                     children: "Username: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 30,
+=======
+                                    lineNumber: 28,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     children: user.Username
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 31,
+=======
+                                    lineNumber: 29,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                             lineNumber: 29,
+=======
+                            lineNumber: 27,
+>>>>>>> Stashed changes
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 28,
+=======
+                        lineNumber: 26,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -53246,25 +53763,41 @@ const ProfileView = ({ token })=>{
                                     children: "Email: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 36,
+=======
+                                    lineNumber: 34,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                                     children: user.Email
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 37,
+=======
+                                    lineNumber: 35,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                             lineNumber: 35,
+=======
+                            lineNumber: 33,
+>>>>>>> Stashed changes
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 34,
+=======
+                        lineNumber: 32,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -53274,7 +53807,11 @@ const ProfileView = ({ token })=>{
                                     children: "Birthday: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 42,
+=======
+                                    lineNumber: 40,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -53284,18 +53821,30 @@ const ProfileView = ({ token })=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 43,
+=======
+                                    lineNumber: 41,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                             lineNumber: 41,
+=======
+                            lineNumber: 39,
+>>>>>>> Stashed changes
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 40,
+=======
+                        lineNumber: 38,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -53305,7 +53854,11 @@ const ProfileView = ({ token })=>{
                                     children: "User ID: "
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 48,
+=======
+                                    lineNumber: 46,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -53315,24 +53868,40 @@ const ProfileView = ({ token })=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 49,
+=======
+                                    lineNumber: 47,
+>>>>>>> Stashed changes
                                     columnNumber: 13
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                             lineNumber: 47,
+=======
+                            lineNumber: 45,
+>>>>>>> Stashed changes
                             columnNumber: 11
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 46,
+=======
+                        lineNumber: 44,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 27,
+=======
+                lineNumber: 25,
+>>>>>>> Stashed changes
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -53341,14 +53910,22 @@ const ProfileView = ({ token })=>{
                         children: "Favorite movies: "
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 54,
+=======
+                        lineNumber: 52,
+>>>>>>> Stashed changes
                         columnNumber: 9
                     }, undefined),
                     favoriteMovies.length === 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: "You do not have any favorite movies."
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 56,
+=======
+                        lineNumber: 54,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined),
                     favoriteMovies.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -53359,29 +53936,49 @@ const ProfileView = ({ token })=>{
                                     movie: movie
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                     lineNumber: 62,
+=======
+                                    lineNumber: 60,
+>>>>>>> Stashed changes
                                     columnNumber: 17
                                 }, undefined)
                             }, movie.id, false, {
                                 fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                                 lineNumber: 61,
+=======
+                                lineNumber: 59,
+>>>>>>> Stashed changes
                                 columnNumber: 15
                             }, undefined))
                     }, void 0, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                         lineNumber: 59,
+=======
+                        lineNumber: 57,
+>>>>>>> Stashed changes
                         columnNumber: 11
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
                 lineNumber: 53,
+=======
+                lineNumber: 51,
+>>>>>>> Stashed changes
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/profile-view.jsx",
+<<<<<<< Updated upstream
         lineNumber: 26,
+=======
+        lineNumber: 24,
+>>>>>>> Stashed changes
         columnNumber: 5
     }, undefined);
 };
