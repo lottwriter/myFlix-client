@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import React from 'react';
-import { useSelector } from "react-redux";
 import { setUser } from "../../redux/reducers/user";
 import { useDispatch, useSelector } from "react-redux";
 
