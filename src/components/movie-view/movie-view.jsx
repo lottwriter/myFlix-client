@@ -1,11 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
 import './movie-view.scss';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-export const MovieView = ({ movies, user, token, updatedUser }) => {
+export const MovieView = ({ user, token, updatedUser }) => {
   const { MovieID } = useParams();
-  const movie = movies.find((b) => b.id === MovieID)
-
+  const movies = useSelector((state) => state.movies.list)
+  const movie = movies.find((m) => m.id === MovieID)
+  
   const addFavorite = async () => {
     await fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/${movie.id}`, {
       method: 'POST',
@@ -45,14 +47,14 @@ export const MovieView = ({ movies, user, token, updatedUser }) => {
   }
  
   console.log(MovieID + `1`);
-  console.log(movies)
+  console.log(movie)
 
-  if (!movies || movies.length === 0) {
+  if (!movie) {
     return <div>Loading...</div>; 
   }
 
  
-  console.log(movie);
+  console.log(`M: `+movie);
 
   if (!movie) {
     return <div>Movie not found</div>; 

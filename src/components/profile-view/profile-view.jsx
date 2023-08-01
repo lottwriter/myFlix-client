@@ -3,9 +3,11 @@ import { Col, Row } from 'react-bootstrap';
 import { MovieCard } from '../movie-card/movie-card';
 import { useState, useEffect } from 'react';
 import React from 'react';
-
-export const ProfileView = ({ user, movies, token }) => {
-     
+import { useSelector } from 'react-redux';
+export const ProfileView = ({  token }) => {
+  const movies = useSelector((state) => state.movies.list)
+  const user = useSelector((state) => state.user);
+  console.log('User data' + user)
     const [favoriteMovies, setFavoriteMovies] = useState([]);
     useEffect(() => {
       fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/`, {
@@ -50,14 +52,14 @@ export const ProfileView = ({ user, movies, token }) => {
       </Row>
       <div>
         <span>Favorite movies: </span>
-        {user.FavoriteMovies.length === 0 && (
+        {favoriteMovies.length === 0 && (
           <span>You do not have any favorite movies.</span>
         )}
         {favoriteMovies.length > 0 && (
           <Row>
             {favoriteMovies.map((movie) => (
               <Col className="mb-4" key={movie.id} md={3}>
-                <MovieCard movieData={movie} />
+                <MovieCard movie={movie} />
               </Col>
             ))}
           </Row>

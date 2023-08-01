@@ -6,25 +6,26 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
 import React from "react";
-
+import { UseSelector, useDispatch, useSelector } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
+import { setUser } from "../../redux/reducers/user";
+import { MoviesList } from "../movies-list/movies-list";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
-  const [user, setUser] = useState(storedUser? storedUser : null);
+  //const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
-  const [movies, setMovies] = useState([]);
+  //const [movies, setMovies] = useState([]);
+const movies = useSelector((state) => state.movies);
+const user = useSelector ((state) => state.user)
 
+const dispatch = useDispatch();
   
-  const updateUser = (updatedUser) => {
-    setUser(updateUser);
-    localStorage.setItem('user', JSON.stringify(user))
-  }
 
 
   useEffect(() => {
@@ -47,7 +48,7 @@ export const MainView = () => {
               ImagePath: movie.ImagePath,
             };
         });
-        setMovies(moviesFromApi);
+        dispatch(setMovies(moviesFromApi));
     })
     .catch((error) => {
         console.log(error)
@@ -64,9 +65,7 @@ export const MainView = () => {
 console.log(movies.length)
   return (
     <BrowserRouter>
-    <NavigationBar
-    user={user}
-    onLoggedOut={() => {setUser(null); localStorage.clear(); setToken(null)}} />
+    <NavigationBar onLoggedOut={() => {dispatch(setUser(null)); localStorage.clear(); setToken(null)}} />
     <Row className="justify-content-md-center">
       <Routes>
       <Route
@@ -92,7 +91,7 @@ console.log(movies.length)
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user, token) => {setUser(user); setToken(token);}} token={token} user={user} />
+                    <LoginView token={token} />
                   </Col>
                 )}
               </>
@@ -116,7 +115,7 @@ console.log(movies.length)
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} user={user} token={localStorage.getItem("token")} />
+                    <MovieView user={user} token={localStorage.getItem("token")} />
                   </Col>
                 )}
               </>
@@ -124,26 +123,10 @@ console.log(movies.length)
           /><Route
           path="/"
           element={
-            <>
-              {!user ? (
-                <Navigate to="/login" replace />
-              ) : movies.length === 0 ? (
-                <Col>Loading . . .</Col>
-              ) : (
-                
-                <>
-                
-                  {movies.map((movie) => (
-                    <Col className="mb-4" key={movie.id} md={3}>
-                      <MovieCard movieData={movie} />
-                    </Col>
-                    
-                  ))}
-                </>
-              )}
-            </>
+          <>{!user ? <Navigate to="/login" replace /> :
+          <MoviesList />}</>
           }
-        />
+          />
     </Routes>
     </Row>
     </BrowserRouter>
