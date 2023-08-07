@@ -5,7 +5,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export const MovieCard = ({ movie, onMovieClick }) => {
-console.log("Movie: "+movie)
   const movies = (useSelector((state) => state.movies))
 
   return (

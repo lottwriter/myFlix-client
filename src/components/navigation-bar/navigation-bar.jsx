@@ -6,7 +6,6 @@ import { setUser } from "../../redux/reducers/user";
 export const NavigationBar = ({ onLoggedOut }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch;
-    console.log(user + `user`);
   return (
     <Navbar bg="light" expand="lg">
       <Container>

@@ -21,7 +21,7 @@ export const MainView = () => {
   //const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   //const [movies, setMovies] = useState([]);
-const movies = useSelector((state) => state.movies);
+const movies = useSelector((state) => state.movies.list);
 const user = useSelector ((state) => state.user)
 
 const dispatch = useDispatch();
@@ -37,6 +37,7 @@ const dispatch = useDispatch();
     })
     .then((response) => response.json())
     .then((data) => {
+      console.log("Movie data has been fetched!")
         const moviesFromApi = data.map((movie) => {
             return {
               id: movie._id,
@@ -62,7 +63,7 @@ const dispatch = useDispatch();
 
   
 
-console.log(movies.length)
+console.log(movies.length + " movies loaded")
   return (
     <BrowserRouter>
     <NavigationBar onLoggedOut={() => {dispatch(setUser(null)); localStorage.clear(); setToken(null)}} />

@@ -7,15 +7,14 @@ import { useSelector } from 'react-redux';
 export const ProfileView = ({  token }) => {
   const movies = useSelector((state) => state.movies.list)
   const user = useSelector((state) => state.user);
-  console.log('User data' + user)
     const [favoriteMovies, setFavoriteMovies] = useState([]);
+    console.log("profile-view component has been mounted!")
     useEffect(() => {
       fetch(`https://movieflixapi-267bf627ca0c.herokuapp.com/users/${user.Username}/`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(`Returned data: ` + data);
           const filteredMovies = movies.filter((m) => data.FavoriteMovies.includes(m.id));
           setFavoriteMovies(filteredMovies);
         });
