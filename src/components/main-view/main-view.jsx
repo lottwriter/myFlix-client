@@ -11,7 +11,7 @@ import { setMovies } from "../../redux/reducers/movies";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { setUser } from "../../redux/reducers/user";
 import { MoviesList } from "../movies-list/movies-list";
 
@@ -64,7 +64,7 @@ const dispatch = useDispatch();
 
 console.log(movies.length)
   return (
-    <BrowserRouter>
+    <HashRouter>
     <NavigationBar onLoggedOut={() => {dispatch(setUser(null)); localStorage.clear(); setToken(null)}} />
     <Row className="justify-content-md-center">
       <Routes>
@@ -129,6 +129,6 @@ console.log(movies.length)
           />
     </Routes>
     </Row>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
