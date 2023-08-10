@@ -10,7 +10,7 @@ import React from "react";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 
 
 export const MainView = () => {
@@ -63,7 +63,7 @@ export const MainView = () => {
 
 console.log(movies.length)
   return (
-    <BrowserRouter>
+    <HashRouter>
     <NavigationBar
     user={user}
     onLoggedOut={() => {setUser(null); localStorage.clear(); setToken(null)}} />
@@ -146,6 +146,6 @@ console.log(movies.length)
         />
     </Routes>
     </Row>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
